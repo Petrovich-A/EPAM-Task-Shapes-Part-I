@@ -5,7 +5,7 @@ import by.epam.http.service.ConeIdGenerator;
 import java.util.Objects;
 
 public class Cone extends Point{
-    private final String ID;
+    private final String Id;
     private double radius;
     private double height;
 
@@ -13,13 +13,13 @@ public class Cone extends Point{
 
     public Cone(double x, double y, double radius, double height) {
         super(x, y);
-        this.ID = coneIdGenerator.createId();
+        this.Id = coneIdGenerator.createId();
         this.radius = radius;
         this.height = height;
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return Id;
     }
 
     public double getRadius() {
@@ -52,18 +52,18 @@ public class Cone extends Point{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Cone cone = (Cone) o;
-        return Double.compare(cone.radius, radius) == 0 && Double.compare(cone.height, height) == 0 && ID.equals(cone.ID) && coneIdGenerator.equals(cone.coneIdGenerator);
+        return Double.compare(cone.radius, radius) == 0 && Double.compare(cone.height, height) == 0 && Id.equals(cone.Id) && coneIdGenerator.equals(cone.coneIdGenerator);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), ID, radius, height, coneIdGenerator);
+        return Objects.hash(super.hashCode(), Id, radius, height, coneIdGenerator);
     }
 
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Cone{");
-        sb.append("ID='").append(ID).append('\'');
+        sb.append("ID='").append(Id).append('\'');
         sb.append(", radius=").append(radius);
         sb.append(", height=").append(height);
         sb.append(", coneIdGenerator=").append(coneIdGenerator);

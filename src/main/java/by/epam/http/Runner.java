@@ -2,9 +2,10 @@ package by.epam.http;
 
 import by.epam.http.entity.Cone;
 import by.epam.http.entity.Point;
+import by.epam.http.exception.ConeException;
 import by.epam.http.parser.DataFromFileParser;
 import by.epam.http.reader.impl.ReaderFilePoints;
-import by.epam.http.service.Calculate;
+import by.epam.http.service.impl.ConeServiceImpl;
 import by.epam.http.validator.impl.ConeValidatorImpl;
 import by.epam.http.validator.impl.FileValidatorImpl;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * Runner
  */
 public class Runner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ConeException {
         ReaderFilePoints readerFilePoints = new ReaderFilePoints();
         List<String> list = new ArrayList<>();
         list = readerFilePoints.readFile("src/main/resources/points.txt");
@@ -36,9 +37,9 @@ public class Runner {
         ConeValidatorImpl coneValidator = new ConeValidatorImpl();
         System.out.println("isConeValid: " + coneValidator.isConeValid(cone));
 
-        Calculate calculate = new Calculate();
-        System.out.println("calculateLateralSurfaceArea: " + calculate.calculateLateralSurfaceArea(cone));
-        System.out.println("calculateTotalSurfaceArea: " + calculate.calculateTotalSurfaceArea(cone));
+        ConeServiceImpl coneService = new ConeServiceImpl();
+        System.out.println("calculateLateralSurfaceArea: " + coneService.calculateLateralSurfaceArea(cone));
+        System.out.println("calculateTotalSurfaceArea: " + coneService.calculateTotalSurfaceArea(cone));
 
 
 

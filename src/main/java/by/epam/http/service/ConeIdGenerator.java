@@ -3,7 +3,7 @@ package by.epam.http.service;
 import java.util.UUID;
 
 public class ConeIdGenerator {
-    private final String ID = "coneID";
+    private final String Id = "coneID";
 
     public String createId(){
         return UUID.randomUUID().toString();
