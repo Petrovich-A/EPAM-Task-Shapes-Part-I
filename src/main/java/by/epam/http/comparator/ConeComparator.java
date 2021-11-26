@@ -4,10 +4,14 @@ import by.epam.http.entity.Cone;
 
 import java.util.Comparator;
 
-public class ConeComparator implements Comparator<Cone> {
-
-    @Override
-    public int compare(Cone o1, Cone o2) {
-        return 0;
+public enum ConeComparator implements Comparator<Cone> {
+    ID{
+        @Override
+        public int compare(Cone o1, Cone o2) {
+//            return o1.getRadius() - o2.getHeight();
+            return 0;
+        }
     }
+
+
 }

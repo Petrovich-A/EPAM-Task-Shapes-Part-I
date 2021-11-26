@@ -8,6 +8,8 @@ public class LogMain {
     public static void main(String[] args) {
         logger.error("first log");
         logger.info("first info log");
+
+
     }
 
 }

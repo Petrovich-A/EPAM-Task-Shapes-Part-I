@@ -4,19 +4,18 @@ import by.epam.http.exception.ConeException;
 import by.epam.http.reader.Readable;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ReaderFilePoints implements Readable {
-    static final Logger LOGGER = (Logger) LogManager.getLogger();
+    static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     public List<String> readFile(String pathFile) throws ConeException {

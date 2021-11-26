@@ -5,7 +5,7 @@ import by.epam.http.validator.FileValidatable;
 import java.io.File;
 
 public class FileValidatorImpl implements FileValidatable {
-    private final String FILE_LINE_VALID_REGEX = "^-?\\d{1,}.\\d{1,}\\s*-?\\d{1,}.\\d{1,}\\s*-?\\d{1,}.\\d{1,}\\s*$";
+    static final String FILE_LINE_VALID_REGEX = "^-?\\d{1,}.\\d{1,}\\s*-?\\d{1,}.\\d{1,}\\s*-?\\d{1,}.\\d{1,}\\s*$";
 
     public FileValidatorImpl() {
     }

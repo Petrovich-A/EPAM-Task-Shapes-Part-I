@@ -5,16 +5,16 @@ import by.epam.http.exception.ConeException;
 import by.epam.http.service.ConeService;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
+
 
 public class ConeServiceImpl implements ConeService {
-    private static final String ERROR_MESSAGE = "cone is invalided";
-    static final Logger LOGGER = (Logger) LogManager.getLogger();
+    static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     public double calculateTotalSurfaceArea(Cone cone) throws ConeException {
         if (cone == null) {
-            throw new ConeException(ERROR_MESSAGE);
+            throw new ConeException("cone is invalided");
         }
         double lateralSurfaceArea = calculateLateralSurfaceArea(cone);
         double totalSurfaceArea = lateralSurfaceArea + Math.PI * Math.pow(cone.getRadius(), 2);
@@ -25,7 +25,7 @@ public class ConeServiceImpl implements ConeService {
     @Override
     public double calculateLateralSurfaceArea(Cone cone) throws ConeException {
         if (cone == null) {
-            throw new ConeException(ERROR_MESSAGE);
+            throw new ConeException("cone is invalided");
         }
         double lateralSurfaceArea = Math.PI * cone.getRadius() * cone.getHeight();
         LOGGER.log(Level.INFO, "Calculate lateralSurfaceArea: {}", lateralSurfaceArea);

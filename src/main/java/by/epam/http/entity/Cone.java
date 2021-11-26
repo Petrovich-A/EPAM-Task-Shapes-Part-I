@@ -1,25 +1,53 @@
 package by.epam.http.entity;
 
-import by.epam.http.service.ConeIdGenerator;
+import by.epam.http.exception.ConeException;
+import by.epam.http.observer.ConeEvent;
+import by.epam.http.observer.ConeObservable;
+import by.epam.http.observer.ConeObserver;
+import by.epam.http.util.ConeIdGenerator;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Cone extends Point{
-    private final String Id;
+public class Cone implements ConeObservable {
+    private final String coneId;
+    private Point2D firstPoint;
+    private Point2D secondPoint;
     private double radius;
     private double height;
+    List<ConeObserver> observers = new ArrayList<>();
 
-    ConeIdGenerator coneIdGenerator = new ConeIdGenerator();
+    public Cone(Point2D firstPoint, Point2D secondPoint, double radius, double height) throws ConeException {
 
-    public Cone(double x, double y, double radius, double height) {
-        super(x, y);
-        this.Id = coneIdGenerator.createId();
+        this.coneId = ConeIdGenerator.generateId();
+        this.firstPoint = firstPoint;
+        this.secondPoint = secondPoint;
         this.radius = radius;
         this.height = height;
     }
 
-    public String getId() {
-        return Id;
+    public Cone(Point2D firstPoint2D, Point2D secondPoint2D) {
+        this.coneId = ConeIdGenerator.generateId();
+    }
+
+    public String getConeId() {
+        return coneId;
+    }
+
+    public Point2D getFirstPoint() {
+        return firstPoint;
+    }
+
+    public void setFirstPoint(Point2D firstPoint) {
+        this.firstPoint = firstPoint;
+    }
+
+    public Point2D getSecondPoint() {
+        return secondPoint;
+    }
+
+    public void setSecondPoint(Point2D secondPoint) {
+        this.secondPoint = secondPoint;
     }
 
     public double getRadius() {
@@ -38,36 +66,24 @@ public class Cone extends Point{
         this.height = height;
     }
 
-    public ConeIdGenerator getConeIdGenerator() {
-        return coneIdGenerator;
-    }
-
-    public void setConeIdGenerator(ConeIdGenerator coneIdGenerator) {
-        this.coneIdGenerator = coneIdGenerator;
+    @Override
+    public void attach(ConeObserver observer) {
+        observers.add(observer);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Cone cone = (Cone) o;
-        return Double.compare(cone.radius, radius) == 0 && Double.compare(cone.height, height) == 0 && Id.equals(cone.Id) && coneIdGenerator.equals(cone.coneIdGenerator);
+    public void detach(ConeObserver observer) {
+        observers.remove(observer);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), Id, radius, height, coneIdGenerator);
-    }
+    public void notifyObservers() {
+        for (ConeObserver observer : observers) {
+            if (observer != null) {
+                ConeEvent coneEvent = new ConeEvent(this);
+                observer.updateParameters(coneEvent);
+            }
+        }
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("Cone{");
-        sb.append("ID='").append(Id).append('\'');
-        sb.append(", radius=").append(radius);
-        sb.append(", height=").append(height);
-        sb.append(", coneIdGenerator=").append(coneIdGenerator);
-        sb.append('}');
-        return sb.toString();
     }
 }

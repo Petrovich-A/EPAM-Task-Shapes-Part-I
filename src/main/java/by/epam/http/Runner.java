@@ -1,7 +1,7 @@
 package by.epam.http;
 
 import by.epam.http.entity.Cone;
-import by.epam.http.entity.Point;
+import by.epam.http.entity.Point2D;
 import by.epam.http.exception.ConeException;
 import by.epam.http.parser.DataFromFileParser;
 import by.epam.http.reader.impl.ReaderFilePoints;
@@ -28,11 +28,12 @@ public class Runner {
         DataFromFileParser dataFromFileParser = new DataFromFileParser();
         List<Double> list1 = dataFromFileParser.parseLine(list.get(0));
         System.out.println("list1: " + list1);
-        Point point = new Point(list1.get(0), list1.get(1));
-        System.out.println("point: " + point);
+        Point2D point2D = new Point2D(list1.get(0), list1.get(1));
+        System.out.println("point: " + point2D);
 
-        Cone cone = new Cone(list1.get(0), list1.get(1), list1.get(2), list1.get(3));
+        Cone cone = new Cone(point2D, point2D);
         System.out.println("cone: " + cone);
+
 
         ConeValidatorImpl coneValidator = new ConeValidatorImpl();
         System.out.println("isConeValid: " + coneValidator.isConeValid(cone));
