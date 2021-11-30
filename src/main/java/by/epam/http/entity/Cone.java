@@ -10,44 +10,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cone implements ConeObservable {
-    private final String coneId;
-    private Point2D firstPoint;
-    private Point2D secondPoint;
+    private final int coneId;
+    private Point2D point;
     private double radius;
-    private double height;
+    private double slantHeight;
     List<ConeObserver> observers = new ArrayList<>();
 
-    public Cone(Point2D firstPoint, Point2D secondPoint, double radius, double height) throws ConeException {
-
+    public Cone(Point2D point, double radius, double slantHeight) {
         this.coneId = ConeIdGenerator.generateId();
-        this.firstPoint = firstPoint;
-        this.secondPoint = secondPoint;
+        this.point = new Point2D(point.getX(), point.getY());
         this.radius = radius;
-        this.height = height;
+        this.slantHeight = slantHeight;
     }
 
-    public Cone(Point2D firstPoint2D, Point2D secondPoint2D) {
-        this.coneId = ConeIdGenerator.generateId();
-    }
-
-    public String getConeId() {
+    public int getConeId() {
         return coneId;
     }
 
-    public Point2D getFirstPoint() {
-        return firstPoint;
+    public Point2D getPoint() {
+        return point;
     }
 
-    public void setFirstPoint(Point2D firstPoint) {
-        this.firstPoint = firstPoint;
-    }
-
-    public Point2D getSecondPoint() {
-        return secondPoint;
-    }
-
-    public void setSecondPoint(Point2D secondPoint) {
-        this.secondPoint = secondPoint;
+    public void setPoint(Point2D point) {
+        this.point = point;
     }
 
     public double getRadius() {
@@ -58,12 +43,12 @@ public class Cone implements ConeObservable {
         this.radius = radius;
     }
 
-    public double getHeight() {
-        return height;
+    public double getSlantHeight() {
+        return slantHeight;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
+    public void setSlantHeight(double slantHeight) {
+        this.slantHeight = slantHeight;
     }
 
     @Override

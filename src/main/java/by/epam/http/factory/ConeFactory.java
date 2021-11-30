@@ -22,9 +22,8 @@ public class ConeFactory {
         if (numbersFromLine.size() != COORDINATES_NUMBER){
             throw new ConeException("Invalid numbers: " + numbersFromLine);
         }
-        Point2D firstPoint2D = new Point2D(numbersFromLine.get(0), numbersFromLine.get(1));
-        Point2D secondPoint2D = new Point2D(numbersFromLine.get(2), numbersFromLine.get(3));
-        Cone cone = new Cone(firstPoint2D, secondPoint2D);
+        Point2D point2D = new Point2D(numbersFromLine.get(0), numbersFromLine.get(1));
+        Cone cone = new Cone(point2D,numbersFromLine.get(2), numbersFromLine.get(3));
         LOGGER.log(Level.INFO, "Cone are created");
         return cone;
     }

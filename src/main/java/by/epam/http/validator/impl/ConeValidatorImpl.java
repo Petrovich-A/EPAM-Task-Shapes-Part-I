@@ -8,8 +8,8 @@ public class ConeValidatorImpl implements ConeValidatable {
 
     @Override
     public boolean isConeValid(Cone cone) {
-        if (Math.abs(cone.getFirstPoint()) > MAX_VALUE_POINT || Math.abs(cone.getSecondPoint()) > MAX_VALUE_POINT
-                || cone.getRadius() <= 0 || cone.getHeight() <= 0) {
+        if (Math.abs(cone.getPoint().getX()) > MAX_VALUE_POINT || Math.abs(cone.getPoint().getY()) > MAX_VALUE_POINT
+                || cone.getRadius() <= 0 || cone.getSlantHeight() <= 0) {
             return false;
         }
         return true;

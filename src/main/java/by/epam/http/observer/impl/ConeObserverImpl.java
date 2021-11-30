@@ -15,7 +15,7 @@ public class ConeObserverImpl implements ConeObserver {
     @Override
     public void updateParameters(ConeEvent event) {
         Cone cone = event.getSource();
-        String coneId = cone.getConeId();
+        int coneId = cone.getConeId();
 //        Warehouse
         ConeServiceImpl coneService = new ConeServiceImpl();
         try{

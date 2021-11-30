@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DataFromFileParser {
+public class DataFromFileParser1 {
     static Logger logger = LogManager.getLogger();
     private final String LINE_PARSE_REGEX = "\\s+";
 

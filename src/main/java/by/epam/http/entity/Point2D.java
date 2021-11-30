@@ -1,7 +1,5 @@
 package by.epam.http.entity;
 
-import java.util.Objects;
-
 public class Point2D {
     private double x;
     private double y;
@@ -60,4 +58,5 @@ public class Point2D {
         sb.append('}');
         return sb.toString();
     }
+
 }

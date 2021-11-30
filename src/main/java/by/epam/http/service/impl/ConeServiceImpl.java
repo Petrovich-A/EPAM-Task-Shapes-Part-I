@@ -27,7 +27,7 @@ public class ConeServiceImpl implements ConeService {
         if (cone == null) {
             throw new ConeException("cone is invalided");
         }
-        double lateralSurfaceArea = Math.PI * cone.getRadius() * cone.getHeight();
+        double lateralSurfaceArea = Math.PI * cone.getRadius() * cone.getSlantHeight();
         LOGGER.log(Level.INFO, "Calculate lateralSurfaceArea: {}", lateralSurfaceArea);
         return lateralSurfaceArea;
     }

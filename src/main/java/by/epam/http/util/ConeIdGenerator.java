@@ -3,11 +3,12 @@ package by.epam.http.util;
 import java.util.UUID;
 
 public final class ConeIdGenerator {
+    private static int id = 0;
 
-    public ConeIdGenerator() {
+    private ConeIdGenerator() {
     }
 
-    public static String generateId() {
-        return UUID.randomUUID().toString();
+    public static int generateId() {
+        return id++;
     }
 }
