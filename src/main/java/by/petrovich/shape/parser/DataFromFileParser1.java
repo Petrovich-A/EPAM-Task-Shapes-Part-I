@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DataFromFileParser1 {
-    static Logger logger = LogManager.getLogger();
-    private final String LINE_PARSE_REGEX = "\\s+";
+    private final Logger logger = LogManager.getLogger();
+    private final String DELIMITER_REGEX = "\\s+";
 
     public List<Double> parseLine(String lineFromFile) throws ConeException {
         if (lineFromFile == null || lineFromFile.isEmpty()) {
@@ -19,7 +19,7 @@ public class DataFromFileParser1 {
         }
         List<Double> numbersFromLine;
         try {
-            numbersFromLine = Arrays.stream(lineFromFile.split(LINE_PARSE_REGEX))
+            numbersFromLine = Arrays.stream(lineFromFile.split(DELIMITER_REGEX))
                     .map(Double::parseDouble)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {

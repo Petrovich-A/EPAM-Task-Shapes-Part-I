@@ -4,21 +4,20 @@ import by.petrovich.shape.entity.Cone;
 import by.petrovich.shape.entity.Point2D;
 import by.petrovich.shape.exception.ConeException;
 import by.petrovich.shape.parser.DataFromFileParser1;
-import by.petrovich.shape.reader.impl.ReaderFilePoints;
+import by.petrovich.shape.reader.impl.FileReader;
 import by.petrovich.shape.service.impl.ConeServiceImpl;
 import by.petrovich.shape.validator.impl.ConeValidatorImpl;
 import by.petrovich.shape.validator.impl.FileValidatorImpl;
 
 import java.util.List;
-
 /**
  * Runner
  */
 public class Runner {
     public static void main(String[] args) throws ConeException {
-        ReaderFilePoints readerFilePoints = new ReaderFilePoints();
+        FileReader fileReader = new FileReader();
         List<String> list;
-        list = readerFilePoints.readFile("src/main/resources/points.txt");
+        list = fileReader.readFile("src/main/resources/points.txt");
         System.out.println("list: " + list);
         FileValidatorImpl fileLineValidator = new FileValidatorImpl();
         boolean isValid = fileLineValidator.isFileLineValid(list.get(0));
@@ -39,7 +38,6 @@ public class Runner {
         ConeServiceImpl coneService = new ConeServiceImpl();
         System.out.println("calculateLateralSurfaceArea: " + coneService.calculateLateralSurfaceArea(cone));
         System.out.println("calculateTotalSurfaceArea: " + coneService.calculateTotalSurfaceArea(cone));
-
 
     }
 }

@@ -16,13 +16,13 @@ public class ConeObserverImpl implements ConeObserver {
     public void updateParameters(ConeEvent event) {
         Cone cone = event.getSource();
         int coneId = cone.getConeId();
-//        Warehouse
+//      Warehouse
         ConeServiceImpl coneService = new ConeServiceImpl();
-        try{
+        try {
             double lateralSurfaceArea = coneService.calculateLateralSurfaceArea(cone);
             double totalSurfaceArea = coneService.calculateTotalSurfaceArea(cone);
-        }catch (ConeException e){
-            LOGGER.log(Level.ERROR, "Warehouse change arror ", e);
+        } catch (ConeException e) {
+            LOGGER.log(Level.ERROR, "Warehouse change error ", e);
         }
 
     }

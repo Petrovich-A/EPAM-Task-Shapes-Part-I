@@ -4,7 +4,7 @@ import by.petrovich.shape.entity.Cone;
 import by.petrovich.shape.validator.ConeValidatable;
 
 public class ConeValidatorImpl implements ConeValidatable {
-    private final double MAX_VALUE_POINT = 1000;
+    private static final double MAX_VALUE_POINT = 1000;
 
     @Override
     public boolean isConeValid(Cone cone) {

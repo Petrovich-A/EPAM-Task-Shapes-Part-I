@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ReaderFilePoints implements Readable {
+public class FileReader implements Readable {
     static final Logger LOGGER = LogManager.getLogger();
 
     @Override

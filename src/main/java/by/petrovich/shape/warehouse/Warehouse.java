@@ -44,7 +44,7 @@ public class Warehouse {
         LOGGER.log(Level.INFO, "Parameters are updated successfully");
     }
 
-    public boolean containsEllipse(String id) {
+    public boolean containsCone(String id) {
         return parametrsStorage.containsKey(id);
     }
 }
